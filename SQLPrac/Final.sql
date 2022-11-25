@@ -38,3 +38,26 @@ CREATE TABLE TEST_BOARD(
 
 CREATE SEQUENCE TEST_BOARD_SEQ;
 
+
+alter table TEST_BOARD modify(REG_TIME DATE DEFAULT SYSDATE);
+alter table TEST_BOARD modify(CREATED_BY VARCHAR2(100));
+
+alter table TEST_BOARD drop(MODIFIED_BY);
+alter table TEST_BOARD drop(REG_TIME);
+
+create table testone (
+    id number(10) primary key,
+    writer varchar2(30) not null,
+    item_name varchar2(50) not null,
+    item_detail varchar2(1000) not null,
+    item_status VARCHAR2(20) not null,
+    price number(20) not null,
+    stock number(20) not null,
+    time date DEFAULT SYSDATE
+);
+
+alter table testone rename column item_name to iname;
+alter table testone rename column item_detail to idetail;
+alter table testone rename column item_status to istatus;
+
+CREATE SEQUENCE testone_seq;
